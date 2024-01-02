@@ -1,0 +1,22 @@
+{
+    "logfileSystem": "/var/log/norimos/system.log",
+    "logfileConsumer": "/var/log/norimos/consumer.log",
+    "logfileAlarmHistory": "/var/log/norimos/alarm.log",
+    "logfileDump": "/var/log/norimos/dump.log",
+    "dump": false,
+    "pluginMQTTPublisher": true,
+    "pluginMQTTPublisher.topicAlarm": "norimos/alarm",
+    "pluginMQTTPublisher.mqttBroker": "mqtt://norimos:norimos@127.0.0.1:1883",
+    "pluginMQTTPublisher.retries": 10,
+    "pluginMQTTPublisher.timeout": 30,
+    "pluginMQTTPublisher.timeoutAlarm": 1,
+    "serial.device": "/dev/ttyS0",
+    "serial.baudrate": 19200,
+    "serial.parity": "none",
+    "serial.characterLength": 8,
+    "serial.stopBits": 1,
+    "serial.flowControl": "none",
+    "consumer.waitMicroseconds": 100,
+    "storagePath": "/tmp",
+    "verbose": false
+}
