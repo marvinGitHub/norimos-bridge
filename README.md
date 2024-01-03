@@ -2,8 +2,7 @@
 
 ## Requirements
 
-- Paradigma SystaComfort Controller Generation 1 ArticleNo. 09-7301 (only works in combination with LON Module
-  ArticleNo. 09-7325)
+TBD
 
 ## Installation
 

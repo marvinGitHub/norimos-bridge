@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="84a71071-24d2-480e-8de1-a1e391084801" name="Changes" comment="" />
+    <list default="true" id="84a71071-24d2-480e-8de1-a1e391084801" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -64,7 +66,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-php-predefined-ba97393d7c68-74080bdb84d3-com.jetbrains.php.sharedIndexes-PS-233.11799.297" />
+        <option value="bundled-php-predefined-ba97393d7c68-b4dcf6bb9de9-com.jetbrains.php.sharedIndexes-PS-233.13135.108" />
       </set>
     </attachedChunks>
   </component>
@@ -145,7 +147,8 @@
       <workItem from="1702469269556" duration="7068000" />
       <workItem from="1702989424188" duration="18668000" />
       <workItem from="1704050083758" duration="410000" />
-      <workItem from="1704218335156" duration="678000" />
+      <workItem from="1704218335156" duration="784000" />
+      <workItem from="1704276151697" duration="599000" />
     </task>
     <servers />
   </component>
