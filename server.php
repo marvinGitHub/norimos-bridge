@@ -58,18 +58,22 @@ try {
                 exit;
             }
 
-            try {
-                if (!$configuration->save($_POST['config'])) {
-                    throw new Exception();
-                }
-            } catch (Exception $e) {
+            if (!is_array($config = json_decode($_POST['config'], true))) {
                 stdout('Posted configuration contains errors. Please check JSON syntax.');
                 exit;
             }
 
-            stdout('System configuration has been saved successfully.');
+            $configuration->override($config);
+
+            if ($configuration->save()) {
+                stdout('System configuration has been saved successfully.');
+            } else {
+                stdout('System configuration could not be saved.');
+            }
+
             exit;
         case 'showSystemConfigurationEditor':
+            $config = $configuration->get();
             ksort($config);
             $config = json_encode($config, JSON_PRETTY_PRINT);
             $config = str_replace('\/', '/', $config);
@@ -139,25 +143,25 @@ HTML;
             exit;
         case 'enableDump':
             $configuration['dump'] = true;
-            $configuration->save($config);
+            $configuration->save();
             stdout($message = 'Dump has been enabled.');
             $systemLog->print('info', $message);
             exit;
         case 'disableDump':
             $configuration['dump'] = false;
-            $configuration->save($config);
+            $configuration->save();
             stdout($message = 'Dump has been disabled.');
             $systemLog->print('info', $message);
             exit;
         case 'disablePluginMQTTPublisher':
             $configuration['pluginMQTTPublisher'] = false;
-            $configuration->save($config);
+            $configuration->save();
             stdout($message = 'Plugin MQTT Publisher has been disabled.');
             $systemLog->print('info', $message);
             exit;
         case 'enablePluginMQTTPublisher':
             $configuration['pluginMQTTPublisher'] = true;
-            $configuration->save($config);
+            $configuration->save();
             stdout($message = 'Plugin MQTT Publisher has been enabled.');
             $systemLog->print('info', $message);
             exit;

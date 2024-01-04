@@ -35,28 +35,38 @@ class Configuration implements ArrayAccess
         $this->config = $configuration;
     }
 
-    public function get() : array
+    public function restore(): bool
+    {
+        try {
+            $default = new Configuration($this->pathnameDefault);
+            $default->load();
+            $this->config = $default->get();
+            $this->save();
+            return true;
+        } catch (Exception $e) {
+            Console::log('Unable to restore configuration');
+            return false;
+        }
+    }
+
+    public function get(): array
     {
         return $this->config;
     }
 
-    public function restore()
+    public function save(): bool
     {
-        return $this->save(file_get_contents($this->pathnameDefault));
+        $config = json_encode($this->config, JSON_PRETTY_PRINT);
+        if (false === $config) {
+            return false;
+        }
+
+        return file_put_contents($this->pathname, $config);
     }
 
-    /**
-     * @throws Exception
-     */
-    public function save($configuration)
+    public function override(array $config)
     {
-        if (is_string($configuration)) {
-            $configuration = json_decode($configuration, true);
-        }
-        if (!is_array($configuration)) {
-            throw new Exception('Unsupported configuration provided');
-        }
-        return file_put_contents($this->pathname, json_encode($configuration, JSON_PRETTY_PRINT));
+        $this->config = $config;
     }
 
     public function offsetExists($offset): bool

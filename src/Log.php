@@ -15,19 +15,14 @@ class Log
         $this->init();
     }
 
-    public function init() : void
+    public function init(): void
     {
         if (!file_exists($this->pathname)) {
             touch($this->pathname);
         }
     }
 
-    public function append(string $message) : bool
-    {
-        return file_put_contents($this->pathname, $message, FILE_APPEND);
-    }
-
-    public function print(string $type, string $content) : bool
+    public function print(string $type, string $content): bool
     {
         $doLog = $type === Log::LOG || $type === Log::ERROR || $type === Log::INFO || $type === Log::DEBUG && $this->verbose === true;
 
@@ -45,6 +40,11 @@ class Log
         }
 
         return $this->append($message);
+    }
+
+    public function append(string $message): bool
+    {
+        return file_put_contents($this->pathname, $message, FILE_APPEND);
     }
 
     public function clear()

@@ -39,74 +39,6 @@ class PluginMQTTPublisher extends PluginAbstract
     }
 
     /**
-     * @return string
-     */
-    public function getTopicAlarm(): string
-    {
-        return $this->topicAlarm;
-    }
-
-    /**
-     * @param string $topic
-     * @return void
-     */
-    public function setTopicAlarm(string $topic)
-    {
-        $this->topicAlarm = $topic;
-    }
-
-    /**
-     * @return int
-     */
-    public function getTimeoutAlarm(): int
-    {
-        return $this->timeoutAlarm;
-    }
-
-    /**
-     * @param int $timeoutAlarm
-     * @return void
-     */
-    public function setTimeoutAlarm(int $timeoutAlarm)
-    {
-        $this->timeoutAlarm = $timeoutAlarm;
-    }
-
-    /**
-     * @return int
-     */
-    public function getRetries(): int
-    {
-        return $this->retries;
-    }
-
-    /**
-     * @param int $retries
-     * @return void
-     */
-    public function setRetries(int $retries)
-    {
-        $this->retries = $retries;
-    }
-
-    /**
-     * @return int
-     */
-    public function getTimeout(): int
-    {
-        return $this->timeout;
-    }
-
-    /**
-     * @param int $timeout
-     * @return void
-     */
-    public function setTimeout(int $timeout)
-    {
-        $this->timeout = $timeout;
-    }
-
-    /**
      * @param PluginContext $context
      * @return void
      */
@@ -153,10 +85,78 @@ class PluginMQTTPublisher extends PluginAbstract
     }
 
     /**
+     * @return int
+     */
+    public function getRetries(): int
+    {
+        return $this->retries;
+    }
+
+    /**
+     * @param int $retries
+     * @return void
+     */
+    public function setRetries(int $retries)
+    {
+        $this->retries = $retries;
+    }
+
+    /**
      * @return array
      */
     private function getBroker(): array
     {
         return $this->broker;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTopicAlarm(): string
+    {
+        return $this->topicAlarm;
+    }
+
+    /**
+     * @param string $topic
+     * @return void
+     */
+    public function setTopicAlarm(string $topic)
+    {
+        $this->topicAlarm = $topic;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTimeout(): int
+    {
+        return $this->timeout;
+    }
+
+    /**
+     * @param int $timeout
+     * @return void
+     */
+    public function setTimeout(int $timeout)
+    {
+        $this->timeout = $timeout;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTimeoutAlarm(): int
+    {
+        return $this->timeoutAlarm;
+    }
+
+    /**
+     * @param int $timeoutAlarm
+     * @return void
+     */
+    public function setTimeoutAlarm(int $timeoutAlarm)
+    {
+        $this->timeoutAlarm = $timeoutAlarm;
     }
 }
