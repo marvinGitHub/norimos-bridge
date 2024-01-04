@@ -1,12 +1,14 @@
 <?php
 
-require 'bootstrap.php';
+/** @var Configuration $configuration */
+$configuration = include 'bootstrap.php';
 
 try {
     $supportedCommands = [
         'showSystemLog',
         'showConsumerLog',
         'clearSystemLog',
+        'clearConsumerLog',
         'showSystemConfigurationEditor',
         'resetSystemConfiguration',
         'showDump',
@@ -32,12 +34,6 @@ try {
         echo $content;
     }
 
-    function printJSON($data)
-    {
-        header('Content-Type: application/json');
-        echo json_encode($data, JSON_PRETTY_PRINT) ?? '';
-    }
-
     if (!isset($_POST['command'])) {
         stdout(sprintf('Please choose between supported commands: [%s]', implode(', ', $supportedCommands)));
         exit;
@@ -48,17 +44,12 @@ try {
         exit;
     }
 
-    $configuration = new Configuration(__DIR__ . '/config/config.json', __DIR__ . '/config/default.json');
-    if (empty($config = $configuration->load())) {
-        stdout('Please check system configuration.');
-        exit;
-    }
-
-    $log = new Log((string)$config['logfileSystem'], (bool)$config['verbose']);
-    $history = new AlarmHistory((string)$config['logfileAlarmHistory']);
-    $dump = new Dump((string)$config['logfileDump']);
-    $serialDeviceConfiguration = new SerialDeviceConfiguration((string)$config['serial.device']);
-    $storage = new KeyValueStorage((string)$config['storagePath']);
+    $systemLog = new Log((string)$configuration['logfileSystem']);
+    $consumerLog = new Log((string)$configuration['logfileConsumer']);
+    $history = new AlarmHistory((string)$configuration['logfileAlarmHistory']);
+    $dump = new Dump((string)$configuration['logfileDump']);
+    $serialDeviceConfiguration = new SerialDeviceConfiguration((string)$configuration['serial.device']);
+    $storage = new KeyValueStorage((string)$configuration['storagePath']);
 
     switch ($command) {
         case 'saveSystemConfiguration':
@@ -91,26 +82,31 @@ try {
 HTML;
             exit;
         case 'clearSystemLog':
-            $log->clear();
+            $systemLog->clear();
             stdout($message = 'System Log has been cleared.');
-            $log->print('info', $message);
+            $systemLog->print('info', $message);
+            exit;
+        case 'clearConsumerLog':
+            $consumerLog->clear();
+            stdout($message = 'Consumer Log has been cleared.');
+            $consumerLog->print('info', $message);
             exit;
         case 'showSystemLog':
-            stdout($log->load());
+            stdout($systemLog->load());
             exit;
         case 'showConsumerLog':
-            stdout((string)file_get_contents($config['logfileConsumer']));
+            stdout((string)file_get_contents($configuration['logfileConsumer']));
             exit;
         case 'resetSystemConfiguration':
             $configuration->restore();
             stdout($message = 'System Configuration has been restored to default values.');
-            $log->print('info', $message);
+            $systemLog->print('info', $message);
             exit;
         case 'showDump':
-            $log->print('info', 'Load dump');
+            $systemLog->print('info', 'Load dump');
             if (empty($data = $dump->load())) {
                 stdout($message = 'No dump available.');
-                $log->print('info', $message);
+                $systemLog->print('info', $message);
                 exit;
             }
             stdout($data);
@@ -118,10 +114,10 @@ HTML;
         case 'clearDump':
             $dump->clear();
             stdout($message = 'Dump has been cleared.');
-            $log->print('info', $message);
+            $systemLog->print('info', $message);
             exit;
         case 'showSerialDeviceConfiguration':
-            $log->print('info', 'Load serial device configuration');
+            $systemLog->print('info', 'Load serial device configuration');
             if (empty($currentSerialDeviceConfiguration = $serialDeviceConfiguration->load())) {
                 stdout($message = 'Failed getting current serial device configuration.');
                 exit;
@@ -129,41 +125,41 @@ HTML;
             stdout($currentSerialDeviceConfiguration);
             exit;
         case 'findSerialDevices':
-            $log->print('info', 'Searching for serial devices...');
+            $systemLog->print('info', 'Searching for serial devices...');
             $serialDevices = $serialDeviceConfiguration->findSerialDevices();
             if (empty($serialDevices)) {
                 stdout($message = 'No serial device found.');
-                $log->print('error', $message);
+                $systemLog->print('error', $message);
                 exit;
             }
             stdout($message = 'Found serial devices:');
-            $log->print('info', $message);
+            $systemLog->print('info', $message);
             stdout($message = implode(', ', $serialDevices));
-            $log->print('log', $message);
+            $systemLog->print('log', $message);
             exit;
         case 'enableDump':
-            $config['dump'] = true;
+            $configuration['dump'] = true;
             $configuration->save($config);
             stdout($message = 'Dump has been enabled.');
-            $log->print('info', $message);
+            $systemLog->print('info', $message);
             exit;
         case 'disableDump':
-            $config['dump'] = false;
+            $configuration['dump'] = false;
             $configuration->save($config);
             stdout($message = 'Dump has been disabled.');
-            $log->print('info', $message);
+            $systemLog->print('info', $message);
             exit;
         case 'disablePluginMQTTPublisher':
-            $config['pluginMQTTPublisher'] = false;
+            $configuration['pluginMQTTPublisher'] = false;
             $configuration->save($config);
             stdout($message = 'Plugin MQTT Publisher has been disabled.');
-            $log->print('info', $message);
+            $systemLog->print('info', $message);
             exit;
         case 'enablePluginMQTTPublisher':
-            $config['pluginMQTTPublisher'] = true;
+            $configuration['pluginMQTTPublisher'] = true;
             $configuration->save($config);
             stdout($message = 'Plugin MQTT Publisher has been enabled.');
-            $log->print('info', $message);
+            $systemLog->print('info', $message);
             exit;
         case 'getRecentAlarms':
             if (count($recent = $history->getRecentAlarms())) {
@@ -187,6 +183,6 @@ HTML;
             exit;
     }
 } catch (Exception $e) {
-    stdout('Unknown server error');
+    stdout(sprintf('Unknown server error: %s', $e->getMessage()));
     exit;
 }

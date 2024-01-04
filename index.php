@@ -1,23 +1,11 @@
 <?php
 
 require 'authorization.php';
+/** @var Configuration $configuration */
+$configuration = include 'bootstrap.php';
 
-require 'bootstrap.php';
-
-if (function_exists('opcache_reset')) {
-    opcache_reset();
-}
-
-$configuration = new Configuration(__DIR__ . '/config/config.json', __DIR__ . '/config/default.json');
-if (false === $config = $configuration->load()) {
-    echo 'Please check system configuration.';
-    exit;
-}
-
-$log = new Log($config['logfileSystem']);
-
-
-$serialDeviceConfiguration = new SerialDeviceConfiguration($config['serial.device']);
+$systemLog = new Log((string)$configuration['logfileSystem']);
+$serialDeviceConfiguration = new SerialDeviceConfiguration((string)$configuration['serial.device']);
 
 echo <<<HTML
 <html lang="en">
@@ -37,6 +25,7 @@ echo <<<HTML
     <button name="command" value="showSystemLog">Show System Log</button>
     <button name="command" value="showConsumerLog">Show Consumer Log</button>        
     <button name="command" value="clearSystemLog">Clear System Log</button>
+    <button name="command" value="clearConsumerLog">Clear Consumer Log</button>
     <button name="command" value="showSystemConfigurationEditor">Show System Configuration</button>
     <button name="command" value="resetSystemConfiguration">Reset System Configuration</button>
     <button name="command" value="showDump">Show Dump</button>    

@@ -17,6 +17,5 @@
     "serial.stopBits": 1,
     "serial.flowControl": "none",
     "consumer.waitMicroseconds": 100,
-    "storagePath": "/tmp",
-    "verbose": false
+    "storagePath": "/tmp"
 }

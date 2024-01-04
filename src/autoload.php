@@ -1,5 +1,6 @@
 <?php
 
+require_once 'Console.php';
 require_once 'Configuration.php';
 require_once 'ConfigurationAwareTrait.php';
 require_once 'Helper.php';
