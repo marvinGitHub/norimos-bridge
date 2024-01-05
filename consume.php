@@ -52,18 +52,10 @@ $pluginHandler->register($pluginSerialProcessor);
 $pluginHandler->register($pluginTelegramProcessor);
 $pluginHandler->register($pluginMQTTPublisher);
 
+$configuration['dump'] ? $dump->enable() : $dump->disable();
+$configuration['pluginMQTTPublisher'] ? $pluginHandler->enable($pluginMQTTPublisher) : $pluginHandler->disable($pluginMQTTPublisher);
+
 while (true) {
-    try {
-        $configuration->load();
-    } catch (Exception $e) {
-        Console::println(sprintf('Unable to reload system configuration: %s', $e->getMessage()));
-    }
-
-    $configuration['dump'] ? $dump->enable() : $dump->disable();
-
     usleep((int)$configuration['consumer.waitMicroseconds'] ?? 100);
-
-    $configuration['pluginMQTTPublisher'] ? $pluginHandler->enable($pluginMQTTPublisher) : $pluginHandler->disable($pluginMQTTPublisher);
-
     $pluginHandler->run();
 }
