@@ -49,7 +49,6 @@ try {
     $history = new AlarmHistory((string)$configuration['logfileAlarmHistory']);
     $dump = new Dump((string)$configuration['logfileDump']);
     $serialDeviceConfiguration = new SerialDeviceConfiguration((string)$configuration['serial.device']);
-    $storage = new KeyValueStorage((string)$configuration['storagePath']);
 
     switch ($command) {
         case 'saveSystemConfiguration':
@@ -188,5 +187,6 @@ HTML;
     }
 } catch (Exception $e) {
     stdout(sprintf('Unknown server error: %s', $e->getMessage()));
+    stdout($e->getTraceAsString());
     exit;
 }
