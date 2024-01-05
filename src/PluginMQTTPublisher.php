@@ -77,7 +77,7 @@ class PluginMQTTPublisher extends PluginAbstract
                     $context->getLog()->print(LOG::ERROR, $e->getMessage());
                     $context->getLog()->print(LOG::ERROR, $e->getTraceAsString());
                 }
-                $context->getLog()->print('info', sprintf('Try republishing alert. %u retries left.', $retries));
+                $context->getLog()->print('info', sprintf('Try republishing alarm. %u retries left.', $retries));
                 sleep($this->getTimeout());
             } while (--$retries >= 0);
 
