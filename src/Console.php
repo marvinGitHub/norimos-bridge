@@ -2,8 +2,8 @@
 
 class Console
 {
-    public static function log(string $message)
+    public static function println(string $message)
     {
-        echo $message;
+        echo $message . PHP_EOL;
     }
 }

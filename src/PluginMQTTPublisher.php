@@ -67,6 +67,7 @@ class PluginMQTTPublisher extends PluginAbstract
                     $payload['title'] = sprintf('Norimos Alarm (%s/%s): %s', $alarm->getChannel(), $alarm->getGroup(), $alarm->getState());
 
                     $mqtt->publish($this->getTopicAlarm(), json_encode($payload));
+                    $context->getLog()->print('info', 'Successfully published alarm via mqtt');
 
                     $mqtt->close();
 

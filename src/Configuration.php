@@ -15,7 +15,7 @@ class Configuration implements ArrayAccess
             try {
                 $this->load();
             } catch (Exception $e) {
-                Console::log(sprintf('Unable to load system configuration: %s', $e->getMessage()));
+                Console::println(sprintf('Unable to load system configuration: %s', $e->getMessage()));
                 exit;
             }
         }
@@ -44,7 +44,7 @@ class Configuration implements ArrayAccess
             $this->save();
             return true;
         } catch (Exception $e) {
-            Console::log('Unable to restore configuration');
+            Console::println('Unable to restore configuration');
             return false;
         }
     }

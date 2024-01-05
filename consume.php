@@ -56,7 +56,7 @@ while (true) {
     try {
         $configuration->load();
     } catch (Exception $e) {
-        Console::log(sprintf('Unable to reload system configuration: %s', $e->getMessage()));
+        Console::println(sprintf('Unable to reload system configuration: %s', $e->getMessage()));
     }
 
     $configuration['dump'] ? $dump->enable() : $dump->disable();
