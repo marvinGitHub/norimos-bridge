@@ -40,7 +40,7 @@ $pluginContext = new PluginContext($configuration, $storage, $buffer, $serial, $
 $pluginHandler = new PluginHandler($pluginContext);
 
 $pluginSerialProcessor = new PluginSerialProcessor();
-$pluginTelegramProcessor = new PluginPrinterLogProcessor();
+$pluginPrinterLogProcessor = new PluginPrinterLogProcessor();
 $pluginAlarmPublisher = new AlarmPublisher(
     (string)$configuration['pluginAlarmPublisher.mqttBroker'],
     (int)$configuration['pluginAlarmPublisher.retries'],
@@ -49,11 +49,11 @@ $pluginAlarmPublisher = new AlarmPublisher(
 $pluginAlarmPublisher->setTopic((string)$configuration['pluginAlarmPublisher.topic']);
 
 $pluginHandler->register($pluginSerialProcessor);
-$pluginHandler->register($pluginTelegramProcessor);
+$pluginHandler->register($pluginPrinterLogProcessor);
 $pluginHandler->register($pluginAlarmPublisher);
 
 $configuration['dump'] ? $dump->enable() : $dump->disable();
-$configuration['pluginAlarmPublisher'] ? $pluginHandler->enable($pluginAlarmPublisher) : $pluginHandler->disable($pluginAlarmPublisher);
+$configuration['pluginAlarmPublisher.enabled'] ? $pluginHandler->enable($pluginAlarmPublisher) : $pluginHandler->disable($pluginAlarmPublisher);
 
 while (true) {
     usleep((int)$configuration['consumer.waitMicroseconds'] ?? 100);
