@@ -69,10 +69,10 @@ abstract class PluginMQTTPublisherAbstract extends PluginAbstract
                     $this->getContext()->getLog()->print(LOG::ERROR, $e->getTraceAsString());
                 }
                 $this->getContext()->getLog()->print('info', sprintf('Try republishing alarm. %u retries left.', $retries));
-                sleep($this->getTimeout());
+                usleep($this->getTimeout());
             } while (--$retries >= 0);
 
-            sleep($this->getTimeoutPerElement());
+            usleep($this->getTimeoutPerElement());
         }
     }
 
@@ -111,6 +111,8 @@ abstract class PluginMQTTPublisherAbstract extends PluginAbstract
     abstract public function publish(MQTTClient $client, $element): void;
 
     /**
+     * Get timeout in microseconds
+     *
      * @return int
      */
     public function getTimeout(): int
@@ -119,6 +121,8 @@ abstract class PluginMQTTPublisherAbstract extends PluginAbstract
     }
 
     /**
+     * Set timeout in microseconds
+     *
      * @param int $timeout
      * @return void
      */
@@ -128,6 +132,8 @@ abstract class PluginMQTTPublisherAbstract extends PluginAbstract
     }
 
     /**
+     * Get timeout per element in microseconds
+     *
      * @return int
      */
     public function getTimeoutPerElement(): int
@@ -136,6 +142,8 @@ abstract class PluginMQTTPublisherAbstract extends PluginAbstract
     }
 
     /**
+     * Set timeout per element in microseconds
+     *
      * @param int $timeoutPerElement
      * @return void
      */
