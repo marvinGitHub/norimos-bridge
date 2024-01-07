@@ -7,20 +7,20 @@ abstract class PluginMQTTPublisherAbstract extends PluginAbstract
     private string $broker;
 
     private int $retries;
-    private int $timeout;
+    private int $timeoutPerRetry;
     private int $timeoutPerElement;
 
     /**
      * @param string $broker
      * @param int $retries
-     * @param int $timeout
+     * @param int $timeoutPerRetry
      * @param int $timeoutPerElement
      */
-    public function __construct(string $broker, int $retries, int $timeout, int $timeoutPerElement)
+    public function __construct(string $broker, int $retries, int $timeoutPerRetry, int $timeoutPerElement)
     {
         $this->setBroker($broker);
         $this->setRetries($retries);
-        $this->setTimeout($timeout);
+        $this->setTimeoutPerRetry($timeoutPerRetry);
         $this->setTimeoutPerElement($timeoutPerElement);
     }
 
@@ -69,7 +69,7 @@ abstract class PluginMQTTPublisherAbstract extends PluginAbstract
                     $this->getContext()->getLog()->print(LOG::ERROR, $e->getTraceAsString());
                 }
                 $this->getContext()->getLog()->print('info', sprintf('Try republishing alarm. %u retries left.', $retries));
-                usleep($this->getTimeout());
+                usleep($this->getTimeoutPerRetry());
             } while (--$retries >= 0);
 
             usleep($this->getTimeoutPerElement());
@@ -111,24 +111,24 @@ abstract class PluginMQTTPublisherAbstract extends PluginAbstract
     abstract public function publish(MQTTClient $client, $element): void;
 
     /**
-     * Get timeout in microseconds
+     * Get timeout per retry in microseconds
      *
      * @return int
      */
-    public function getTimeout(): int
+    public function getTimeoutPerRetry(): int
     {
-        return $this->timeout;
+        return $this->timeoutPerRetry;
     }
 
     /**
-     * Set timeout in microseconds
+     * Set timeout per retry in microseconds
      *
-     * @param int $timeout
+     * @param int $timeoutPerRetry
      * @return void
      */
-    public function setTimeout(int $timeout)
+    public function setTimeoutPerRetry(int $timeoutPerRetry)
     {
-        $this->timeout = $timeout;
+        $this->timeoutPerRetry = $timeoutPerRetry;
     }
 
     /**

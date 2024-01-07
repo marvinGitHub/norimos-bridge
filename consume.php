@@ -44,7 +44,7 @@ $pluginPrinterLogProcessor = new PluginPrinterLogProcessor();
 $pluginAlarmPublisher = new AlarmPublisher(
     (string)$configuration['pluginAlarmPublisher.mqttBroker'],
     (int)$configuration['pluginAlarmPublisher.retries'],
-    (int)$configuration['pluginAlarmPublisher.timeout'],
+    (int)$configuration['pluginAlarmPublisher.timeoutPerRetry'],
     (int)$configuration['pluginAlarmPublisher.timeoutPerElement']);
 $pluginAlarmPublisher->setTopic((string)$configuration['pluginAlarmPublisher.topic']);
 
