@@ -18,7 +18,7 @@ class AlarmPublisher extends PluginMQTTPublisherAbstract
      * @return void
      * @throws DataTransferException
      */
-    public function publish(MQTTClient $client, $element)
+    public function publish(MQTTClient $client, $element): void
     {
         $payload = $element->toArray();
         $payload['title'] = sprintf('Norimos Alarm (%s/%s): %s', $element->getChannel(), $element->getGroup(), $element->getState());

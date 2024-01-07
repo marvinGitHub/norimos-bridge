@@ -2,7 +2,7 @@
 
 class SerialDeviceConfiguration
 {
-    private $serialDeviceName;
+    private string $serialDeviceName;
 
     /**
      * @param string $serialDeviceName

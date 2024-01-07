@@ -2,7 +2,7 @@
 
 trait ConfigurationAwareTrait
 {
-    protected $configuration;
+    protected ?Configuration $configuration;
 
     public function getConfiguration(): ?Configuration
     {

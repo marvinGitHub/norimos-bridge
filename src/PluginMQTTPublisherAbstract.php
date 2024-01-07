@@ -103,7 +103,12 @@ abstract class PluginMQTTPublisherAbstract extends PluginAbstract
         $this->retries = $retries;
     }
 
-    abstract public function publish(MQTTClient $client, $element);
+    /**
+     * @param MQTTClient $client
+     * @param mixed $element
+     * @return void
+     */
+    abstract public function publish(MQTTClient $client, $element): void;
 
     /**
      * @return int

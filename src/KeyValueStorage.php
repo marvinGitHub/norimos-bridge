@@ -2,7 +2,7 @@
 
 class KeyValueStorage
 {
-    private $path;
+    private string $path;
 
     public function __construct(string $path)
     {

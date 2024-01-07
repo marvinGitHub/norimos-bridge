@@ -4,13 +4,13 @@ class PluginContext
 {
     use ConfigurationAwareTrait;
 
-    private $storage;
-    private $alarmQueue;
-    private $alarmHistory;
-    private $log;
-    private $buffer;
-    private $serial;
-    private $dump;
+    private KeyValueStorage $storage;
+    private AlarmQueue $alarmQueue;
+    private AlarmHistory $alarmHistory;
+    private Log $log;
+    private StringBuffer $buffer;
+    private Serial $serial;
+    private Dump $dump;
 
     public function __construct(Configuration $configuration, KeyValueStorage $storage, StringBuffer $buffer, Serial $serial, AlarmQueue $alarmQueue, AlarmHistory $alarmHistory, Log $log, Dump $dump)
     {

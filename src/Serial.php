@@ -6,17 +6,17 @@ class Serial
     const SERIAL_DEVICE_SET = 1;
     const SERIAL_DEVICE_OPENED = 2;
 
-    public $device;
+    public string $device;
     public $handle;
-    public $state;
-    public $buffer;
+    public int $state;
+    public StringBuffer $buffer;
 
     /**
      * This var says if buffer should be flushed by sendMessage (true) or manually (false)
      *
      * @var bool
      */
-    public $autoflush = true;
+    public bool $autoflush = true;
 
     /**
      * Constructor
