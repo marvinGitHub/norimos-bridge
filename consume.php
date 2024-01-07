@@ -41,19 +41,19 @@ $pluginHandler = new PluginHandler($pluginContext);
 
 $pluginSerialProcessor = new PluginSerialProcessor();
 $pluginTelegramProcessor = new PluginPrinterLogProcessor();
-$pluginMQTTPublisher = new PluginMQTTPublisher(
-    (string)$configuration['pluginMQTTPublisher.mqttBroker'],
-    (string)$configuration['pluginMQTTPublisher.topicAlarm'],
-    (int)$configuration['pluginMQTTPublisher.retries'],
-    (int)$configuration['pluginMQTTPublisher.timeout'],
-    (int)$configuration['pluginMQTTPublisher.timeoutAlarm']);
+$pluginAlarmPublisher = new AlarmPublisher(
+    (string)$configuration['pluginAlarmPublisher.mqttBroker'],
+    (int)$configuration['pluginAlarmPublisher.retries'],
+    (int)$configuration['pluginAlarmPublisher.timeout'],
+    (int)$configuration['pluginAlarmPublisher.timeoutPerElement']);
+$pluginAlarmPublisher->setTopic((string)$configuration['pluginAlarmPublisher.topic']);
 
 $pluginHandler->register($pluginSerialProcessor);
 $pluginHandler->register($pluginTelegramProcessor);
-$pluginHandler->register($pluginMQTTPublisher);
+$pluginHandler->register($pluginAlarmPublisher);
 
 $configuration['dump'] ? $dump->enable() : $dump->disable();
-$configuration['pluginMQTTPublisher'] ? $pluginHandler->enable($pluginMQTTPublisher) : $pluginHandler->disable($pluginMQTTPublisher);
+$configuration['pluginAlarmPublisher'] ? $pluginHandler->enable($pluginAlarmPublisher) : $pluginHandler->disable($pluginAlarmPublisher);
 
 while (true) {
     usleep((int)$configuration['consumer.waitMicroseconds'] ?? 100);

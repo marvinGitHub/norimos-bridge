@@ -34,8 +34,8 @@ echo <<<HTML
     <button name="command" value="clearDump">Clear Dump</button>  
     <button name="command" value="showSerialDeviceConfiguration">Show Serial Device Configuration</button>
     <button name="command" value="findSerialDevices">Find Serial Devices</button>
-    <button name="command" value="enablePluginMQTTPublisher">Enable MQTT</button>
-    <button name="command" value="disablePluginMQTTPublisher">Disable MQTT</button> 
+    <button name="command" value="enablePluginAlarmPublisher">Enable Alarm Publisher</button>
+    <button name="command" value="disablePluginAlarmPublisher">Disable Alarm Publisher</button> 
     <button name="command" value="restartConsumer">Restart Consumer</button> 
     <button name="command" value="showSupervisorStatus">Show Supervisor Status</button>
 </form>

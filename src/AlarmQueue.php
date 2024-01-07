@@ -1,8 +1,8 @@
 <?php
 
-class AlarmQueue
+class AlarmQueue implements QueueMQTT
 {
-    private $queue = [];
+    private array $queue = [];
 
     public function count(): int
     {
@@ -22,5 +22,25 @@ class AlarmQueue
     public function next()
     {
         return array_pop($this->queue);
+    }
+
+    public function current()
+    {
+        return current($this->queue);
+    }
+
+    public function key()
+    {
+        return key($this->queue);
+    }
+
+    public function valid(): bool
+    {
+        return true;
+    }
+
+    public function rewind()
+    {
+        reset($this->queue);
     }
 }

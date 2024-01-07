@@ -2,5 +2,19 @@
 
 abstract class PluginAbstract
 {
-    abstract public function run(PluginContext $context);
+    private ?PluginContext $context;
+
+    public function getContext(): ?PluginContext
+    {
+        return $this->context;
+    }
+
+    public function setContext(PluginContext $context)
+    {
+        $this->context = $context;
+    }
+
+    abstract public function run();
+
+
 }

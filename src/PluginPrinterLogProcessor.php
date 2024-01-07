@@ -4,9 +4,9 @@ class PluginPrinterLogProcessor extends PluginAbstract
 {
     const REGEX_PRINTER_LOG = '#([A-Z0-9]{4,})\s+([0-9]{2}\.[0-9]{2}/[0-9]{2}:[0-9]{2})\s+([A-Z0-9]{3,})\s+(.{2})\s+([^\r\n]*)[\r\n]+#i';
 
-    public function run(PluginContext $context)
+    public function run()
     {
-        $buffer = $context->getBuffer()->toString();
+        $buffer = $this->getContext()->getBuffer()->toString();
 
         $matches = [];
 
@@ -14,7 +14,7 @@ class PluginPrinterLogProcessor extends PluginAbstract
             return;
         }
 
-        $context->getLog()->print('info', sprintf('Received incoming alarm on channel %s', $matches[1]));
+        $this->getContext()->getLog()->print('info', sprintf('Received incoming alarm on channel %s', $matches[1]));
 
         $alarm = new Alarm([
             'channel' => $matches[1],
@@ -24,12 +24,12 @@ class PluginPrinterLogProcessor extends PluginAbstract
             'message' => $matches[5]
         ]);
 
-        $context->getBuffer()->remove($matches[0]);
-        $context->getAlarmQueue()->queue($alarm);
+        $this->getContext()->getBuffer()->remove($matches[0]);
+        $this->getContext()->getAlarmQueue()->queue($alarm);
 
-        $addedToHistory = $context->getAlarmHistory()->add($alarm);
+        $addedToHistory = $this->getContext()->getAlarmHistory()->add($alarm);
         if (!$addedToHistory) {
-            $context->getLog()->print(LOG::ERROR, 'Unable to add alarm to history');
+            $this->getContext()->getLog()->print(LOG::ERROR, 'Unable to add alarm to history');
         }
     }
 }

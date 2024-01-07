@@ -17,8 +17,8 @@ try {
         'findSerialDevices',
         'enableDump',
         'disableDump',
-        'enablePluginMQTTPublisher',
-        'disablePluginMQTTPublisher',
+        'enablePluginAlarmPublisher',
+        'disablePluginAlarmPublisher',
         'saveSystemConfiguration',
         'getRecentAlarms',
         'restartConsumer',
@@ -152,16 +152,16 @@ HTML;
             stdout($message = 'Dump has been disabled.');
             $systemLog->print('info', $message);
             exit;
-        case 'disablePluginMQTTPublisher':
-            $configuration['pluginMQTTPublisher'] = false;
+        case 'disablePluginAlarmPublisher':
+            $configuration['pluginAlarmPublisher.enabled'] = false;
             $configuration->save();
-            stdout($message = 'Plugin MQTT Publisher has been disabled.');
+            stdout($message = 'Plugin Alarm Publisher has been disabled.');
             $systemLog->print('info', $message);
             exit;
-        case 'enablePluginMQTTPublisher':
-            $configuration['pluginMQTTPublisher'] = true;
+        case 'enablePluginAlarmPublisher':
+            $configuration['pluginAlarmPublisher.enabled'] = true;
             $configuration->save();
-            stdout($message = 'Plugin MQTT Publisher has been enabled.');
+            stdout($message = 'Plugin Alarm Publisher has been enabled.');
             $systemLog->print('info', $message);
             exit;
         case 'getRecentAlarms':

@@ -2,13 +2,13 @@
 
 class PluginSerialProcessor extends PluginAbstract
 {
-    public function run(PluginContext $context)
+    public function run()
     {
-        $data = $context->getSerial()->read();
+        $data = $this->getContext()->getSerial()->read();
 
         if ($data) {
-            $context->getBuffer()->append($data);
-            $context->getDump()->write($data);
+            $this->getContext()->getBuffer()->append($data);
+            $this->getContext()->getDump()->write($data);
         }
     }
 }

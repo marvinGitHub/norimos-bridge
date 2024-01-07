@@ -5,8 +5,8 @@ class PluginHandler
     /**
      * @var PluginContext
      */
-    private $defaultContext;
-    private $plugins;
+    private PluginContext $defaultContext;
+    private SplObjectStorage $plugins;
 
     public function __construct(PluginContext $context)
     {
@@ -45,7 +45,8 @@ class PluginHandler
             }
 
             try {
-                $plugin->run($this->getDefaultContext());
+                $plugin->setContext($this->getDefaultContext());
+                $plugin->run();
             } catch (Exception $e) {
                 $this->getDefaultContext()->getLog()->print('error', $e->getMessage());
                 $this->getDefaultContext()->getLog()->print('error', $e->getTraceAsString());
