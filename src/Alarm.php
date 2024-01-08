@@ -2,11 +2,11 @@
 
 class Alarm
 {
-    private $channel;
-    private $datetime;
-    private $group;
-    private $state;
-    private $message;
+    private string $channel;
+    private string $datetime;
+    private string $group;
+    private string $state;
+    private string $message;
 
     public function __construct(array $params)
     {
