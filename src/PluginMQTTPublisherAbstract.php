@@ -74,8 +74,6 @@ abstract class PluginMQTTPublisherAbstract extends PluginAbstract
 
             usleep($this->getTimeoutPerElement());
         }
-
-        $this->getContext()->getLog()->print('error', 'Publishing data finally failed');
     }
 
     abstract public function getQueue(): QueueMQTT;
