@@ -12,6 +12,7 @@ class Log implements LoggerInterface
     const EMERGENCY = 'emergency';
     const CRITICAL = 'critical';
     const NOTICE = 'notice';
+    const WARNING = 'warning';
 
     private string $pathname;
 
