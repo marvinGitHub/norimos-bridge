@@ -45,7 +45,8 @@ $pluginAlarmPublisher = new AlarmPublisher(
     (string)$configuration['pluginAlarmPublisher.mqttBroker'],
     (int)$configuration['pluginAlarmPublisher.retries'],
     (int)$configuration['pluginAlarmPublisher.timeoutPerRetry'],
-    (int)$configuration['pluginAlarmPublisher.timeoutPerElement']);
+    (int)$configuration['pluginAlarmPublisher.timeoutPerElement'],
+    (int)$configuration['pluginAlarmPublisher.timeoutSocket']);
 $pluginAlarmPublisher->setTopic((string)$configuration['pluginAlarmPublisher.topic']);
 
 $pluginHandler->register($pluginSerialProcessor);

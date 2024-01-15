@@ -1,6 +1,7 @@
 <?php
 
 use PhpMqtt\Client\MQTTClient;
+use PhpMqtt\Client\ConnectionSettings;
 
 abstract class PluginMQTTPublisherAbstract extends PluginAbstract
 {
@@ -8,19 +9,22 @@ abstract class PluginMQTTPublisherAbstract extends PluginAbstract
     private int $retries;
     private int $timeoutPerRetry;
     private int $timeoutPerElement;
+    private int $timeoutSocket;
 
     /**
      * @param string $broker
      * @param int $retries
      * @param int $timeoutPerRetry
      * @param int $timeoutPerElement
+     * @param int $timeoutSocket
      */
-    public function __construct(string $broker, int $retries, int $timeoutPerRetry, int $timeoutPerElement)
+    public function __construct(string $broker, int $retries, int $timeoutPerRetry, int $timeoutPerElement, int $timeoutSocket)
     {
         $this->setBroker($broker);
         $this->setRetries($retries);
         $this->setTimeoutPerRetry($timeoutPerRetry);
         $this->setTimeoutPerElement($timeoutPerElement);
+        $this->setTimeoutSocket($timeoutSocket);
     }
 
     /**
@@ -45,20 +49,21 @@ abstract class PluginMQTTPublisherAbstract extends PluginAbstract
             throw new InvalidArgumentException(sprintf('Unsupported broker url detected: %s', var_export($broker, true)));
         }
 
+
+        $mqtt = new MQTTClient($host = $broker['host'], $port = (int)$broker['port'], null, null, null, $this->getContext()->getLog());
+        $settings = new ConnectionSettings(0, false, false, $this->getTimeoutSocket());
+
         while (null !== $element = $this->getQueue()->next()) {
             $retries = $this->getRetries();
 
             do {
                 try {
-                    if (!Helper::checkPortAccessibility($host = $broker['host'], $port = (int)$broker['port'], 2)) {
+                    if (!Helper::checkPortAccessibility($host, $port, 2)) {
                         throw new RuntimeException(sprintf('Unable to connect to mqtt broker: %s:%u', $host, $port));
                     }
 
-                    $mqtt = new MQTTClient($host, $port, null, null, null, $this->getContext()->getLog());
-                    $mqtt->connect($broker['user'], $broker['pass'], null, true);
-
+                    $mqtt->connect($broker['user'], $broker['pass'], $settings, true);
                     $this->publish($mqtt, $element);
-
                     $mqtt->close();
 
                     break;
@@ -149,5 +154,24 @@ abstract class PluginMQTTPublisherAbstract extends PluginAbstract
     public function setTimeoutPerElement(int $timeoutPerElement)
     {
         $this->timeoutPerElement = $timeoutPerElement;
+    }
+
+    /**
+     * Set timeout for socket in seconds
+     *
+     * @param int $timeoutSocket
+     * @return void
+     */
+    public function setTimeoutSocket(int $timeoutSocket)
+    {
+        $this->timeoutSocket = $timeoutSocket;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTimeoutSocket(): int
+    {
+        return $this->timeoutSocket;
     }
 }
