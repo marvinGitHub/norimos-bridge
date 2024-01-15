@@ -55,7 +55,7 @@ abstract class PluginMQTTPublisherAbstract extends PluginAbstract
                         throw new RuntimeException(sprintf('Unable to connect to mqtt broker: %s:%u', $host, $port));
                     }
 
-                    $mqtt = new MQTTClient($host, $port);
+                    $mqtt = new MQTTClient($host, $port, null, null, null, $this->getContext()->getLog());
                     $mqtt->connect($broker['user'], $broker['pass'], null, true);
 
                     $this->publish($mqtt, $element);

@@ -8,7 +8,10 @@ class PluginSerialProcessor extends PluginAbstract
 
         if ($data) {
             $this->getContext()->getBuffer()->append($data);
-            $this->getContext()->getDump()->write($data);
+
+            if ($this->getContext()->getConfiguration()['dump']) {
+                $this->getContext()->getDump()->write($data);
+            }
         }
     }
 }

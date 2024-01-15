@@ -2,15 +2,15 @@
 
 class Dump
 {
-    private $pathname;
-    private $enabled = true;
+    private string $pathname;
+    private bool $enabled = true;
 
     public function __construct(string $pathname)
     {
         $this->pathname = $pathname;
     }
 
-    public function load()
+    public function load() : bool
     {
         if (!file_exists($this->pathname)) {
             return false;

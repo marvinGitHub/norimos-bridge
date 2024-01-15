@@ -1,11 +1,17 @@
 <?php
 
-class Log
+use Psr\Log\LoggerInterface;
+
+class Log implements LoggerInterface
 {
     const LOG = 'log';
     const DEBUG = 'debug';
     const ERROR = 'error';
     const INFO = 'info';
+    const ALERT = 'alert';
+    const EMERGENCY = 'emergency';
+    const CRITICAL = 'critical';
+    const NOTICE = 'notice';
 
     private $pathname;
 
@@ -22,14 +28,44 @@ class Log
         }
     }
 
+    public function clear()
+    {
+        unlink($this->pathname);
+        $this->init();
+    }
+
+    public function load()
+    {
+        return file_get_contents($this->pathname);
+    }
+
+    /**
+     * System is unusable.
+     *
+     * @param string $message
+     * @param array $context
+     * @return void
+     */
+    public function emergency($message, array $context = [])
+    {
+        $this->log(Log::EMERGENCY, $message, $context);
+    }
+
+    /**
+     * Logs with an arbitrary level.
+     *
+     * @param mixed $level
+     * @param string $message
+     * @param array $context
+     * @return void
+     */
+    public function log($level, $message, array $context = [])
+    {
+        $this->print($level, $message);
+    }
+
     public function print(string $type, string $content): bool
     {
-        $doLog = $type === Log::LOG || $type === Log::ERROR || $type === Log::INFO || $type === Log::DEBUG && $this->verbose === true;
-
-        if (!$doLog) {
-            return false;
-        }
-
         switch ($type) {
             case Log::LOG:
                 $message = sprintf('%s%s', $content, PHP_EOL);
@@ -47,14 +83,98 @@ class Log
         return file_put_contents($this->pathname, $message, FILE_APPEND);
     }
 
-    public function clear()
+    /**
+     * Action must be taken immediately.
+     *
+     * Example: Entire website down, database unavailable, etc. This should
+     * trigger the SMS alerts and wake you up.
+     *
+     * @param string $message
+     * @param array $context
+     * @return void
+     */
+    public function alert($message, array $context = [])
     {
-        unlink($this->pathname);
-        $this->init();
+        $this->log(Log::ALERT, $message, $context);
     }
 
-    public function load()
+    /**
+     * Critical conditions.
+     *
+     * Example: Application component unavailable, unexpected exception.
+     *
+     * @param string $message
+     * @param array $context
+     * @return void
+     */
+    public function critical($message, array $context = [])
     {
-        return file_get_contents($this->pathname);
+        $this->log(Log::CRITICAL, $message, $context);
+    }
+
+    /**
+     * Runtime errors that do not require immediate action but should typically
+     * be logged and monitored.
+     *
+     * @param string $message
+     * @param array $context
+     * @return void
+     */
+    public function error($message, array $context = [])
+    {
+        $this->log(Log::ERROR, $message, $context);
+    }
+
+    /**
+     * Exceptional occurrences that are not errors.
+     *
+     * Example: Use of deprecated APIs, poor use of an API, undesirable things
+     * that are not necessarily wrong.
+     *
+     * @param string $message
+     * @param array $context
+     * @return void
+     */
+    public function warning($message, array $context = [])
+    {
+        $this->log(Log::WARNING, $message, $context);
+    }
+
+    /**
+     * Normal but significant events.
+     *
+     * @param string $message
+     * @param array $context
+     * @return void
+     */
+    public function notice($message, array $context = [])
+    {
+        $this->log(Log::NOTICE, $message, $context);
+    }
+
+    /**
+     * Interesting events.
+     *
+     * Example: User logs in, SQL logs.
+     *
+     * @param string $message
+     * @param array $context
+     * @return void
+     */
+    public function info($message, array $context = [])
+    {
+        $this->log(Log::INFO, $message, $context);
+    }
+
+    /**
+     * Detailed debug information.
+     *
+     * @param string $message
+     * @param array $context
+     * @return void
+     */
+    public function debug($message, array $context = [])
+    {
+        $this->log(Log::DEBUG, $message, $context);
     }
 }

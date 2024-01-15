@@ -21,7 +21,13 @@ class AlarmPublisher extends PluginMQTTPublisherAbstract
     public function publish(MQTTClient $client, $element): void
     {
         $payload = $element->toArray();
-        $payload['title'] = sprintf('Norimos Alarm (%s/%s): %s', $element->getChannel(), $element->getGroup(), $element->getState());
+
+        $state = $element->getState();
+        if ($state === '--') {
+            $state = 'OFF';
+        }
+
+        $payload['title'] = sprintf('Noris Alarm (%s/%s): %s', $element->getChannel(), $element->getGroup(), $state);
 
         $client->publish($this->getTopic(), json_encode($payload));
         $this->getContext()->getLog()->print('info', 'Successfully published alarm via mqtt');
