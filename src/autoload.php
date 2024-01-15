@@ -11,7 +11,6 @@ require_once 'QueueMQTT.php';
 require_once 'AlarmQueue.php';
 require_once 'Serial.php';
 require_once 'Dump.php';
-require_once 'HttpClient.php';
 require_once 'SerialDeviceConfiguration.php';
 require_once 'KeyValueStorage.php';
 require_once 'IntervalAwareTrait.php';

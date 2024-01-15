@@ -2,9 +2,9 @@
 
 class Configuration implements ArrayAccess
 {
-    private $pathname;
-    private $pathnameDefault;
-    private $config = [];
+    private string $pathname;
+    private ?string $pathnameDefault;
+    private array $config = [];
 
     public function __construct(string $pathname, ?string $pathnameDefault = null, ?bool $autoload = true)
     {

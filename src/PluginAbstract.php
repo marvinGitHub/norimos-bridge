@@ -15,6 +15,4 @@ abstract class PluginAbstract
     }
 
     abstract public function run();
-
-
 }
