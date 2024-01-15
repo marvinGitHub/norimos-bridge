@@ -462,6 +462,8 @@ class MQTTClient implements ClientContract
             }
         } catch (DataTransferException $e) {
             $this->logger->error(sprintf('While connecting to the MQTT broker at [%s:%s], a transfer error occurred.', $this->host, $this->port));
+            $this->logger->error($e->getMessage());
+            $this->logger->info($e->getTraceAsString());
             throw new ConnectingToBrokerFailedException(
                 self::EXCEPTION_CONNECTION_FAILED,
                 'A connection could not be established due to data transfer issues.'
