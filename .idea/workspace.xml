@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="84a71071-24d2-480e-8de1-a1e391084801" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/php-mqtt/client/src/MQTTClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/php-mqtt/client/src/MQTTClient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +151,7 @@
       <workItem from="1704218335156" duration="784000" />
       <workItem from="1704276151697" duration="599000" />
       <workItem from="1704307886855" duration="14372000" />
-      <workItem from="1705305453142" duration="842000" />
+      <workItem from="1705305453142" duration="1326000" />
     </task>
     <servers />
   </component>
