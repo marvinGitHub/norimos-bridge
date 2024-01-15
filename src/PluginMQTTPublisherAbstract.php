@@ -5,7 +5,6 @@ use PhpMqtt\Client\MQTTClient;
 abstract class PluginMQTTPublisherAbstract extends PluginAbstract
 {
     private string $broker;
-
     private int $retries;
     private int $timeoutPerRetry;
     private int $timeoutPerElement;

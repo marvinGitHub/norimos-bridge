@@ -13,7 +13,7 @@ class Log implements LoggerInterface
     const CRITICAL = 'critical';
     const NOTICE = 'notice';
 
-    private $pathname;
+    private string $pathname;
 
     public function __construct(string $pathname)
     {

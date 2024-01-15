@@ -4,11 +4,11 @@ use PhpMqtt\Client\MQTTClient;
 
 class PluginMQTTPublisher extends PluginAbstract
 {
-    private $broker;
-    private $topicAlarm;
-    private $retries;
-    private $timeout;
-    private $timeoutAlarm;
+    private string $broker;
+    private string $topicAlarm;
+    private int $retries;
+    private int $timeout;
+    private int $timeoutAlarm;
 
     /**
      * @param string $broker
@@ -38,18 +38,18 @@ class PluginMQTTPublisher extends PluginAbstract
         $this->broker = $fragments;
     }
 
+
     /**
-     * @param PluginContext $context
      * @return void
      */
-    public function run(PluginContext $context)
+    public function run()
     {
-        if (0 === $context->getAlarmQueue()->count()) {
+        if (0 === $this->getContext()->getAlarmQueue()->count()) {
             return;
         }
 
         /** @var $alarm Alarm */
-        while (null !== $alarm = $context->getAlarmQueue()->next()) {
+        while (null !== $alarm = $this->getContext()->getAlarmQueue()->next()) {
             $retries = $this->getRetries();
 
             do {
@@ -60,24 +60,24 @@ class PluginMQTTPublisher extends PluginAbstract
                         throw new RuntimeException(sprintf('Unable to connect to mqtt broker: %s:%u', $host, $port));
                     }
 
-                    $mqtt = new MQTTClient($host, $port, null, null, null, $context->getLog());
+                    $mqtt = new MQTTClient($host, $port, null, null, null, $this->getContext()->getLog());
                     $mqtt->connect($broker['user'], $broker['pass'], null, true);
 
                     $payload = $alarm->toArray();
                     $payload['title'] = sprintf('Norimos Alarm (%s/%s): %s', $alarm->getChannel(), $alarm->getGroup(), $alarm->getState());
 
                     $mqtt->publish($this->getTopicAlarm(), json_encode($payload));
-                    $context->getLog()->print('info', 'Successfully published alarm via mqtt');
+                    $this->getContext()->getLog()->print('info', 'Successfully published alarm via mqtt');
 
                     $mqtt->close();
 
                     break;
                 } catch (Exception $e) {
-                    $context->getLog()->print(LOG::ERROR, sprintf('%s: failed publishing data', static::class));
-                    $context->getLog()->print(LOG::ERROR, $e->getMessage());
-                    $context->getLog()->print(LOG::ERROR, $e->getTraceAsString());
+                    $this->getContext()->getLog()->print(LOG::ERROR, sprintf('%s: failed publishing data', static::class));
+                    $this->getContext()->getLog()->print(LOG::ERROR, $e->getMessage());
+                    $this->getContext()->getLog()->print(LOG::ERROR, $e->getTraceAsString());
                 }
-                $context->getLog()->print('info', sprintf('Try republishing alarm. %u retries left.', $retries));
+                $this->getContext()->getLog()->print('info', sprintf('Try republishing alarm. %u retries left.', $retries));
                 sleep($this->getTimeout());
             } while (--$retries >= 0);
 

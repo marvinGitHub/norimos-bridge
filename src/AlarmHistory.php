@@ -2,7 +2,7 @@
 
 class AlarmHistory
 {
-    private $filename;
+    private string $filename;
 
     public function __construct(string $filename)
     {

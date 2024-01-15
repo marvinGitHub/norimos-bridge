@@ -2,7 +2,7 @@
 
 class StringBuffer
 {
-    private $buffer = '';
+    private string $buffer = '';
 
     public function append(string $data)
     {
@@ -13,7 +13,6 @@ class StringBuffer
     {
         return $this->buffer;
     }
-
 
     public function toString(): string
     {
@@ -29,6 +28,4 @@ class StringBuffer
     {
         $this->buffer = '';
     }
-
-
 }
