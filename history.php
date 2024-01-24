@@ -1,6 +1,5 @@
 <?php
 
-require 'authorization.php';
 /** @var Configuration $configuration */
 $configuration = include 'bootstrap.php';
 
