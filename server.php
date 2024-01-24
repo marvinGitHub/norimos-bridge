@@ -166,8 +166,9 @@ HTML;
             exit;
         case 'getRecentAlarms':
             if (count($recent = $history->getRecentAlarms())) {
-                foreach ($recent as $alarm) {
-                    stdout(sprintf('%s %s %s %s %s', $alarm['channel'], $alarm['datetime'], $alarm['group'], $alarm['state'], $alarm['message']));
+                foreach ($recent as $data) {
+                    $alarm = new Alarm($data);
+                    stdout($alarm->toString());
                 }
             }
             exit;

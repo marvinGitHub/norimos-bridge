@@ -1,0 +1,127 @@
+{"channel":"0B37","datetime":"20.11\/09:31","group":"AL1","state":"--","message":"FIRE ALARM"}
+{"channel":"0B37","datetime":"20.11\/10:00","group":"AL1","state":"ON","message":"FIRE ALARM"}
+{"channel":"0B37","datetime":"20.11\/09:31","group":"AL1","state":"--","message":"FIRE ALARM"}
+{"channel":"E37B","datetime":"12.12\/12:12","group":"AL1","state":"--","message":"FIRE ALARM"}
+{"channel":"E37B","datetime":"13.24\/24:34","group":"AL2","state":"ON","message":"FIRE ALARM"}
+{"channel":"E38B","datetime":"15.56\/34:43","group":"AL4","state":"--","message":"TEST"}
+{"channel":"ESDD","datetime":"45.56\/34:34","group":"AL5","state":"--","message":"\u0014PuTTY\u0005"}
+{"channel":"E37B","datetime":"12.34\/23:34","group":"AL1","state":"--","message":"TEST"}
+{"channel":"E38B","datetime":"12.45\/34:34","group":"AL4","state":"--","message":"TEST"}
+{"channel":"0513","datetime":"12.01\/12:36","group":"AL1","state":"ON","message":"N3000-A12             F"}
+{"channel":"0513","datetime":"12.01\/12:37","group":"AL1","state":"--","message":"N3000-A12             F"}
+{"channel":"0B45","datetime":"12.01\/12:46","group":"AL1","state":"--","message":"Chilled Water Unit 1-4 "}
+{"channel":"0B45","datetime":"12.01\/12:51","group":"AL1","state":"ON","message":"Chilled Water Unit 1-4 "}
+{"channel":"0B45","datetime":"12.01\/12:53","group":"AL1","state":"--","message":"Chilled Water Unit 1-4 "}
+{"channel":"0B45","datetime":"12.01\/12:57","group":"AL1","state":"ON","message":"Chilled Water Unit 1-4 "}
+{"channel":"0B45","datetime":"12.01\/12:59","group":"AL1","state":"--","message":"Chilled Water Unit 1-4 "}
+{"channel":"0B45","datetime":"12.01\/13:20","group":"AL1","state":"ON","message":"Chilled Water Unit 1-4 "}
+{"channel":"0513","datetime":"12.01\/15:19","group":"AL1","state":"--","message":"N3000-A12             F"}
+{"channel":"0B45","datetime":"12.01\/17:30","group":"AL1","state":"--","message":"Chilled Water Unit 1-4 "}
+{"channel":"0247","datetime":"14.01\/00:16","group":"AL1","state":"ON","message":"MRG1 Bear.T.Outl.MDE  H"}
+{"channel":"0247","datetime":"14.01\/00:25","group":"AL1","state":"--","message":"MRG1 Bear.T.Outl.MDE  H"}
+{"channel":"0247","datetime":"14.01\/00:33","group":"AL1","state":"ON","message":"MRG1 Bear.T.Outl.MDE  H"}
+{"channel":"0941","datetime":"14.01\/07:58","group":"AL1","state":"ON","message":"EDG Alarm+Start       F"}
+{"channel":"0B45","datetime":"14.01\/09:00","group":"AL1","state":"ON","message":"Chilled Water Unit 1-4 "}
+{"channel":"0B45","datetime":"14.01\/09:40","group":"AL1","state":"--","message":"Chilled Water Unit 1-4 "}
+{"channel":"0941","datetime":"15.01\/07:01","group":"AL1","state":"--","message":"EDG Alarm+Start       F"}
+{"channel":"0962","datetime":"15.01\/08:19","group":"AL1","state":"--","message":"AC 6                  F"}
+{"channel":"0217","datetime":"15.01\/09:42","group":"AL1","state":"ON","message":"A02-Insul.\/Sensor.    F"}
+{"channel":"0217","datetime":"15.01\/09:44","group":"AL1","state":"--","message":"A02-Insul.\/Sensor.    F"}
+{"channel":"0217","datetime":"15.01\/09:46","group":"AL1","state":"ON","message":"A02-Insul.\/Sensor.    F"}
+{"channel":"0247","datetime":"15.01\/09:48","group":"AL1","state":"--","message":"MRG1 Bear.T.Outl.MDE  H"}
+{"channel":"0217","datetime":"15.01\/09:48","group":"AL1","state":"--","message":"A02-Insul.\/Sensor.    F"}
+{"channel":"0947","datetime":"15.01\/13:55","group":"AL1","state":"--","message":"AC 1                  F"}
+{"channel":"0C42","datetime":"15.01\/16:43","group":"AL1","state":"ON","message":"Tech.Al.Fire Central   "}
+{"channel":"0C42","datetime":"15.01\/16:44","group":"AL1","state":"--","message":"Tech.Al.Fire Central   "}
+{"channel":"0C42","datetime":"15.01\/16:45","group":"AL1","state":"ON","message":"Tech.Al.Fire Central   "}
+{"channel":"0C42","datetime":"15.01\/16:46","group":"AL1","state":"--","message":"Tech.Al.Fire Central   "}
+{"channel":"0513","datetime":"16.01\/08:28","group":"AL1","state":"ON","message":"N3000-A12             F"}
+{"channel":"0114","datetime":"16.01\/09:59","group":"AL1","state":"ON","message":"Norican System        F"}
+{"channel":"0114","datetime":"16.01\/10:00","group":"AL1","state":"--","message":"Norican System        F"}
+{"channel":"0513","datetime":"16.01\/10:00","group":"AL1","state":"--","message":"N3000-A12             F"}
+{"channel":"0823","datetime":"17.01\/07:37","group":"AL1","state":"ON","message":"Bilge Fwd.PumpRoom PS H"}
+{"channel":"0823","datetime":"17.01\/07:49","group":"AL1","state":"--","message":"Bilge Fwd.PumpRoom PS H"}
+{"channel":"0645","datetime":"17.01\/09:06","group":"AL1","state":"ON","message":"DG2 Alarm+Start       F"}
+{"channel":"0732","datetime":"17.01\/10:29","group":"AL1","state":"ON","message":"DG4 Alarm+Start       F"}
+{"channel":"0B37","datetime":"17.01\/13:25","group":"AL1","state":"ON","message":"FIRE ALARM             "}
+{"channel":"0967","datetime":"17.01\/13:25","group":"AL1","state":"ON","message":"Vent.Unit V12         F"}
+{"channel":"0965","datetime":"17.01\/13:25","group":"AL1","state":"ON","message":"AC 10                 F"}
+{"channel":"0962","datetime":"17.01\/13:25","group":"AL1","state":"ON","message":"AC 6                  F"}
+{"channel":"0966","datetime":"17.01\/13:25","group":"AL1","state":"ON","message":"AC 11                 F"}
+{"channel":"0964","datetime":"17.01\/13:25","group":"AL1","state":"ON","message":"AC 8\/9                F"}
+{"channel":"0961","datetime":"17.01\/13:25","group":"AL1","state":"ON","message":"AC 4\/5                F"}
+{"channel":"0947","datetime":"17.01\/13:25","group":"AL1","state":"ON","message":"AC 1                  F"}
+{"channel":"0B37","datetime":"17.01\/13:28","group":"AL1","state":"--","message":"FIRE ALARM             "}
+{"channel":"0B37","datetime":"17.01\/13:33","group":"AL1","state":"ON","message":"FIRE ALARM             "}
+{"channel":"0B37","datetime":"17.01\/14:30","group":"AL1","state":"--","message":"FIRE ALARM             "}
+{"channel":"0965","datetime":"17.01\/14:46","group":"AL1","state":"--","message":"AC 10                 F"}
+{"channel":"0962","datetime":"17.01\/14:49","group":"AL1","state":"--","message":"AC 6                  F"}
+{"channel":"0961","datetime":"17.01\/14:52","group":"AL1","state":"--","message":"AC 4\/5                F"}
+{"channel":"0964","datetime":"17.01\/14:54","group":"AL1","state":"--","message":"AC 8\/9                F"}
+{"channel":"0947","datetime":"17.01\/14:58","group":"AL1","state":"--","message":"AC 1                  F"}
+{"channel":"0A62","datetime":"18.01\/02:16","group":"AL1","state":"ON","message":"MSB 220V Earth        F"}
+{"channel":"0B21","datetime":"18.01\/02:16","group":"AL1","state":"ON","message":"MDS 220V\/24V Earth     "}
+{"channel":"0B21","datetime":"18.01\/06:24","group":"AL1","state":"--","message":"MDS 220V\/24V Earth     "}
+{"channel":"0A62","datetime":"18.01\/06:24","group":"AL1","state":"--","message":"MSB 220V Earth        F"}
+{"channel":"0965","datetime":"18.01\/07:17","group":"AL1","state":"ON","message":"AC 10                 F"}
+{"channel":"0962","datetime":"18.01\/07:36","group":"AL1","state":"ON","message":"AC 6                  F"}
+{"channel":"0731","datetime":"18.01\/10:11","group":"AL1","state":"ON","message":"DG3 Alarm+Start       F"}
+{"channel":"0632","datetime":"18.01\/12:42","group":"AL1","state":"ON","message":"HW Boiler 1            "}
+{"channel":"0633","datetime":"18.01\/13:10","group":"AL1","state":"ON","message":"HW Boiler 2            "}
+{"channel":"0965","datetime":"18.01\/14:15","group":"AL1","state":"--","message":"AC 10                 F"}
+{"channel":"0633","datetime":"18.01\/15:18","group":"AL1","state":"--","message":"HW Boiler 2            "}
+{"channel":"0632","datetime":"18.01\/15:18","group":"AL1","state":"--","message":"HW Boiler 1            "}
+{"channel":"0962","datetime":"18.01\/15:33","group":"AL1","state":"--","message":"AC 6                  F"}
+{"channel":"0962","datetime":"19.01\/07:01","group":"AL1","state":"ON","message":"AC 6                  F"}
+{"channel":"0B42","datetime":"19.01\/07:19","group":"AL1","state":"ON","message":"Start.Air Compressor 1 "}
+{"channel":"0B43","datetime":"19.01\/07:19","group":"AL1","state":"ON","message":"Start.Air Compressor 2 "}
+{"channel":"0513","datetime":"19.01\/07:24","group":"AL1","state":"ON","message":"N3000-A12             F"}
+{"channel":"0B44","datetime":"19.01\/07:24","group":"AL1","state":"ON","message":"Control Air System   PL"}
+{"channel":"0114","datetime":"19.01\/07:47","group":"AL1","state":"ON","message":"Norican System        F"}
+{"channel":"0114","datetime":"19.01\/07:51","group":"AL1","state":"--","message":"Norican System        F"}
+{"channel":"0513","datetime":"19.01\/07:51","group":"AL1","state":"--","message":"N3000-A12             F"}
+{"channel":"0842","datetime":"19.01\/08:32","group":"AL1","state":"ON","message":"Air Comp.Bulkhd.Door PL"}
+{"channel":"0B42","datetime":"19.01\/13:34","group":"AL1","state":"--","message":"Start.Air Compressor 1 "}
+{"channel":"0B43","datetime":"19.01\/13:34","group":"AL1","state":"--","message":"Start.Air Compressor 2 "}
+{"channel":"0842","datetime":"19.01\/13:50","group":"AL1","state":"--","message":"Air Comp.Bulkhd.Door PL"}
+{"channel":"0B44","datetime":"19.01\/13:57","group":"AL1","state":"--","message":"Control Air System   PL"}
+{"channel":"0962","datetime":"19.01\/14:26","group":"AL1","state":"--","message":"AC 6                  F"}
+{"channel":"0B37","datetime":"20.01\/06:51","group":"AL1","state":"ON","message":"FIRE ALARM             "}
+{"channel":"0B37","datetime":"20.01\/06:55","group":"AL1","state":"--","message":"FIRE ALARM             "}
+{"channel":"0B44","datetime":"20.01\/07:40","group":"AL1","state":"ON","message":"Control Air System   PL"}
+{"channel":"0B44","datetime":"20.01\/07:41","group":"AL1","state":"--","message":"Control Air System   PL"}
+{"channel":"0B44","datetime":"20.01\/07:58","group":"AL1","state":"ON","message":"Control Air System   PL"}
+{"channel":"0B44","datetime":"20.01\/08:46","group":"AL1","state":"--","message":"Control Air System   PL"}
+{"channel":"0962","datetime":"22.01\/07:04","group":"AL1","state":"ON","message":"AC 6                  F"}
+{"channel":"0962","datetime":"22.01\/11:00","group":"AL1","state":"--","message":"AC 6                  F"}
+{"channel":"0631","datetime":"22.01\/12:31","group":"AL1","state":"--","message":"DG1 Alarm+Start       F"}
+{"channel":"0631","datetime":"22.01\/12:39","group":"AL1","state":"ON","message":"DG1 Alarm+Start       F"}
+{"channel":"0731","datetime":"22.01\/16:56","group":"AL1","state":"--","message":"DG3 Alarm+Start       F"}
+{"channel":"0645","datetime":"22.01\/16:57","group":"AL1","state":"--","message":"DG2 Alarm+Start       F"}
+{"channel":"0631","datetime":"22.01\/16:58","group":"AL1","state":"--","message":"DG1 Alarm+Start       F"}
+{"channel":"0963","datetime":"22.01\/17:04","group":"AL1","state":"--","message":"AC 7                  F"}
+{"channel":"0645","datetime":"23.01\/08:50","group":"AL1","state":"ON","message":"DG2 Alarm+Start       F"}
+{"channel":"0631","datetime":"23.01\/09:50","group":"AL1","state":"ON","message":"DG1 Alarm+Start       F"}
+{"channel":"0631","datetime":"23.01\/10:31","group":"AL1","state":"--","message":"DG1 Alarm+Start       F"}
+{"channel":"0631","datetime":"23.01\/10:32","group":"AL1","state":"ON","message":"DG1 Alarm+Start       F"}
+{"channel":"0645","datetime":"23.01\/10:32","group":"AL1","state":"--","message":"DG2 Alarm+Start       F"}
+{"channel":"0631","datetime":"23.01\/10:32","group":"AL1","state":"--","message":"DG1 Alarm+Start       F"}
+{"channel":"0731","datetime":"23.01\/12:11","group":"AL1","state":"ON","message":"DG3 Alarm+Start       F"}
+{"channel":"0A33","datetime":"23.01\/12:11","group":"AL1","state":"--","message":"MSB 380V Earth         "}
+{"channel":"0731","datetime":"23.01\/12:12","group":"AL1","state":"--","message":"DG3 Alarm+Start       F"}
+{"channel":"0A45","datetime":"23.01\/12:14","group":"AL1","state":"ON","message":"MSB LT CW Pump  1+2    "}
+{"channel":"0A45","datetime":"23.01\/12:16","group":"AL1","state":"--","message":"MSB LT CW Pump  1+2    "}
+{"channel":"0A33","datetime":"23.01\/13:33","group":"AL1","state":"ON","message":"MSB 380V Earth         "}
+{"channel":"0B37","datetime":"24.01\/07:59","group":"AL1","state":"ON","message":"FIRE ALARM             "}
+{"channel":"0965","datetime":"24.01\/07:59","group":"AL1","state":"ON","message":"AC 10                 F"}
+{"channel":"0964","datetime":"24.01\/07:59","group":"AL1","state":"ON","message":"AC 8\/9                F"}
+{"channel":"0963","datetime":"24.01\/07:59","group":"AL1","state":"ON","message":"AC 7                  F"}
+{"channel":"0962","datetime":"24.01\/07:59","group":"AL1","state":"ON","message":"AC 6                  F"}
+{"channel":"0961","datetime":"24.01\/07:59","group":"AL1","state":"ON","message":"AC 4\/5                F"}
+{"channel":"0947","datetime":"24.01\/07:59","group":"AL1","state":"ON","message":"AC 1                  F"}
+{"channel":"0B37","datetime":"24.01\/08:00","group":"AL1","state":"--","message":"FIRE ALARM             "}
+{"channel":"0963","datetime":"24.01\/08:05","group":"AL1","state":"--","message":"AC 7                  F"}
+{"channel":"0962","datetime":"24.01\/08:05","group":"AL1","state":"--","message":"AC 6                  F"}
+{"channel":"0947","datetime":"24.01\/08:07","group":"AL1","state":"--","message":"AC 1                  F"}
+{"channel":"0961","datetime":"24.01\/08:15","group":"AL1","state":"--","message":"AC 4\/5                F"}
+{"channel":"0B45","datetime":"24.01\/12:46","group":"AL1","state":"ON","message":"Chilled Water Unit 1-4 "}

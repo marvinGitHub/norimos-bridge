@@ -8,9 +8,11 @@ class Alarm
     private string $state;
     private string $message;
 
-    public function __construct(array $params)
+    public function __construct(?array $params = null)
     {
-        $this->fromArray($params);
+        if ($params) {
+            $this->fromArray($params);
+        }
     }
 
     public function fromArray(array $params)
@@ -41,6 +43,11 @@ class Alarm
             'state' => $this->getState(),
             'message' => $this->getMessage()
         ];
+    }
+
+    public function toString() : string
+    {
+        return sprintf('%s %s %s %s %s', $this->getChannel(), $this->getDateTime(), $this->getGroup(), $this->getState(), $this->getMessage());
     }
 
     public function getChannel(): string
